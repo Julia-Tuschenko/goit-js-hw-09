@@ -15,7 +15,13 @@ console.log(refs.btnStop);
 function onColorImprovisation(){
     const color = getRandomHexColor();
     refs.colorBody.style.backgroundColor = color;
-    spanText.textContent = color;
-}
+};
 
-refs.btnStart.addEventListener("click", onColorImprovisation);
+const onClick = () => {
+    setTimeout(() => {
+        onColorImprovisation();
+    }, 1000);
+  };
+
+refs.btnStart.addEventListener("click", onClick);
+
