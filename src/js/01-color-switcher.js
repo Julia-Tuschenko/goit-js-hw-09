@@ -9,19 +9,24 @@ const refs = {
 };
 
 
-
 function onColorImprovisation(){
     const color = getRandomHexColor();
     refs.colorBody.style.backgroundColor = color;
 };
 
-const onClick = () => {
+const onClick = () => { 
   setInterval(() => {
         onColorImprovisation();
     }, 1000);
   };
 
-// setInterval(onColorImprovisation, 1000);
+const stopClick = () => {
+  btnStop.style.display= "block";
+};
 
 
 refs.btnStart.addEventListener("click", onClick);
+refs.btnStop.addEventListener("click", stopClick);
+
+
+
