@@ -8,8 +8,6 @@ const refs = {
     colorBody: document.querySelector('body'),
 };
 
-console.log(refs.btnStart);
-console.log(refs.btnStop);
 
 
 function onColorImprovisation(){
@@ -18,10 +16,12 @@ function onColorImprovisation(){
 };
 
 const onClick = () => {
-    setTimeout(() => {
+  setInterval(() => {
         onColorImprovisation();
     }, 1000);
   };
 
-refs.btnStart.addEventListener("click", onClick);
+// setInterval(onColorImprovisation, 1000);
 
+
+refs.btnStart.addEventListener("click", onClick);
