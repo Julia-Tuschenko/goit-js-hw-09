@@ -8,25 +8,51 @@ const refs = {
     colorBody: document.querySelector('body'),
 };
 
+const onClick = { 
+  intervalId: null,
+  isActive: false,
 
-function onColorImprovisation(){
-    const color = getRandomHexColor();
-    refs.colorBody.style.backgroundColor = color;
-};
+  start(){
+    if(this.isActive){
+      return;
+    };
+    this.isActive = true;
 
-const onClick = () => { 
-  setInterval(() => {
-        onColorImprovisation();
+    this.intervalId = setInterval(() => {
+      const color = getRandomHexColor();
+      refs.colorBody.style.backgroundColor = color;
     }, 1000);
-  };
+  }, 
 
-const stopClick = () => {
-  btnStop.style.display= "block";
+  stop(){
+    clearInterval(this.intervalId);
+    console.log(`Interval with id ${this.intervalId} has stopped!`);
+  },
 };
 
+refs.btnStart.addEventListener("click", () => {
+  onClick.start();
+});
+refs.btnStop.addEventListener("click", () => {
+  onClick.stop();
+});
 
-refs.btnStart.addEventListener("click", onClick);
-refs.btnStop.addEventListener("click", stopClick);
 
 
+// function onColorImprovisation(){
+//     const color = getRandomHexColor();
+//     refs.colorBody.style.backgroundColor = color;
+// };
 
+
+// onClick.start();
+
+// const onClick = () => { 
+//   setInterval(() => {
+//         onColorImprovisation();
+//     }, 1000);
+//   };
+
+// const stopClick = () => {
+//   btnStop.style.display= "block";
+// };
