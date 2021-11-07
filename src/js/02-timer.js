@@ -17,23 +17,25 @@ const refs = {
 const DURATION = 1000;
 
 
-refs.btnStart.setAttribute("disabled", 'disabled');
-
+// refs.btnStart.setAttribute("disabled", 'disabled');
+refs.btnStart.disabled = true;
+refs.input.disabled =  false;
 
 const options = {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    isActive: false,
+    // isActive: false,
     onClose(selectedDates) {
       console.log(selectedDates[0]);
       if(selectedDates[0].getTime() < Date.now()){
         // window.alert("Please choose a date in the future");
         Notify.warning('Please chjkukhoose a date in the future');
       } else {
-        refs.btnStart.removeAttribute('disabled');
-        this.isActive = true;
+        refs.btnStart.disabled = false;
+        // refs.btnStart.removeAttribute('disabled');
+        // this.isActive = true;
         refs.selectedDate = selectedDates[0].getTime();
       }
     },
@@ -45,7 +47,8 @@ const timeCalendar = flatpickr(refs.input, options);
 // const selectedTime = refs.input.value;
 
 function ontimerStartClick(){
-  refs.input.disablet =  true;
+  refs.input.disabled = true;
+  refs.btnStart.disabled = true;
   timerTime();
   refs.timeId = setInterval(timerTime, DURATION);
 }

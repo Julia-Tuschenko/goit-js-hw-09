@@ -10,23 +10,27 @@ const refs = {
 
 const onClick = { 
   intervalId: null,
-  isActive: false,
+  // isActive: false,
 
   start(){
     if(this.isActive){
       return;
     };
-    this.isActive = true;
+    // this.isActive = true;
 
     this.intervalId = setInterval(() => {
       const color = getRandomHexColor();
       refs.colorBody.style.backgroundColor = color;
     }, 1000);
+    refs.btnStart.disabled = true;
+    refs.btnStop.disabled = false;
   }, 
 
   stop(){
     clearInterval(this.intervalId);
     console.log(`Interval with id ${this.intervalId} has stopped!`);
+    refs.btnStart.disabled = false;
+    refs.btnStop.disabled = true;
   },
 };
 
